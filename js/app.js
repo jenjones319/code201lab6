@@ -19,7 +19,7 @@ calcCustomersPerHour : function() {
 },
 calcCookiesPerHour : function() {
     this.calcCustomersPerHour();
-    for(var 1 = 0; i < hoursOperation.length; i++){
+    for(var i = 0; i < hoursOperation.length; i++){
         var oneHour = Math.ceil(this.customerPerHour[i] * this.avgPerCust);
         this.cookiesPerHour.push(oneHour);
         console.log('this.cookiesPerHour', this.cookiesPerHour);
