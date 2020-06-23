@@ -29,7 +29,7 @@ calcCookiesPerHour : function() {
 },
 var allShops = [storeOne];
 function renderAllShops() {
-    for(var i=0; i < allShops.length; i++){
+    for(var i = 0; i < allShops.length; i++){
         allShops[i].render();
     }
 render() {
