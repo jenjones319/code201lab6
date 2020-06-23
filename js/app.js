@@ -27,21 +27,22 @@ calcCookiesPerHour : function() {
         console.log('this.totalHourlyCookies', this.totalHourlyCookies);
     }
 },
+}
 var allShops = [storeOne];
 function renderAllShops() {
     for(var i = 0; i < allShops.length; i++){
         allShops[i].render();
     }
-render() {
+}
+function render() {
     this.calcCookiesPerHour ();
     var unorderedList = document.getElementById('seattle');
-    for(var i = 0; i < hoursOperation.length i++){
-        var listItems = document.create element('li');
-        listItems.textContent = hoursOperation[i] + this.cookiesPerHour[i] + 'cookies'.;
+    for(var i = 0; i < hoursOperation.length; i++){
+        var listItems = document.createElement('li');
+        listItems.textContent = hoursOperation[i] + this.cookiesPerHour[i] + 'cookies.';
         unorderedList.appendChild(listItems);
     }
     listItems = document.createElement('li');
     listItems.textContent = 'Total:' + this.totalHourlyCookies + 'cookies.';
     unorderedList.appendChild(listItems);
 }
-
