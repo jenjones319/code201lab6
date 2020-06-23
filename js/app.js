@@ -3,8 +3,11 @@ console.log('app.js is connected.')
 
 var hoursOperation = ['6am: ', '7am: ', '8am: ', '9am: ', '10am: ', '11am: ', '12pm: ', '1pm: ', '2pm: ', '3pm: ', '4pm: ', '5pm: ', '6pm: ', '7pm: '];
 
-var storeOne = {
-    location: 'seattle',
+function randomCustomerPerHour(minCust, maxCust){
+    return Math.floor(Math.random() * (maxCust - minCust + 1)) + minCust;
+}
+
+var seattle = {
     minCust: 23,
     maxCust: 65, 
     avgPerCust: 6.3, 
@@ -12,11 +15,14 @@ var storeOne = {
     customerPerHour: [],
     cookiesPerHour: [],
 
-calcCustomersPerHour : function() {
+    setCustomerPerHour : function(){
     for(var i = 0; i < hoursOperation.length; i++){
         this.customerPerHour.push(randomCustomerNumbers(this.minCust,this.maxCust));
+        }
     }
-},
+};
+console.log(seattle.setcustomerPerHour());
+
 calcCookiesPerHour : function() {
     this.calcCustomersPerHour();
     for(var i = 0; i < hoursOperation.length; i++){
