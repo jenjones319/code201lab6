@@ -17,7 +17,7 @@ calcCustomersPerHour : function() {
         this.customerPerHour.push(randomCustomerNumbers(this.minCust,this.maxCust));
     }
 },
-calcCookiesPerHour: function()
+calcCookiesPerHour : function()
     this.calcCustomersPerHour();
     for(var 1=0; i < hoursOperation.length; i++){
         var oneHour = Math.ceil(this.customerPerHour[i] * this.avgPerCust);
@@ -40,6 +40,4 @@ var unorderedList = document.getElementById('seattle');
     listItems.textContent = 'Total:' + this.totalHourlyCookies + 'cookies.';
     unorderedList.appendChild(listItems);
 }
-
-var allShops = [];
 
