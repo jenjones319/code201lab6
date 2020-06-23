@@ -15,41 +15,20 @@ var storeOne = {
 calcCustomersPerHour : function() {
     for(var i = 0; i < hoursOperation.length; i++){
         this.customerPerHour.push(randomCustomerNumbers(this.minCust,this.maxCust));
-}
-
+    }
 },
-calcCookiesPerHour: function(){
+calcCookiesPerHour: function()
     this.calcCustomersPerHour();
     for(var 1=0; i < hoursOperation.length; i++){
         var oneHour = Math.ceil(this.customerPerHour[i] * this.avgPerCust);
         }
-    },
+    }
 };
-
-var allShops = [StoreOne];
-function renderAllShops(){
-    for(var i=0; i < )
-
-
-
-function Store(location, minCust, maxCust, avgPerCust) {
-    this.location = location;
-    this.minCust = minCust;
-    this.maxCust = maxCust;
-    this.avgPerCust = avgPerCust;
-this.Store = function() {
-    return this.maxCust - this.minCust;
-    };
-}
-
-var seattleStore = new Store('Seattle', 23, 65, 6.3);
-var tokyoStore = new Store('Tokyo', 3, 24, 1.2);
-var dubaiStore = new Store('Dubai', 11, 38, 3.7);
-var parisStore = new Store('Paris', 20, 38, 2.3);
-var limaStore = new Store('Lima', 2, 16, 4.6);
-
-var detailsStore = (seattleStore.location + ' Min. Customers: ' + minCust + ' Max. Customers: ' + maxCust + 'Avg. Sale Per: ' + avgPerCust); 
-
+var allShops = [storeOne];
+function renderAllShops() {
+    for(var i=0; i < allShops.length; i++){
+        allShops[i].render();
+    }
 
 var unorderedList = document.getElementById('seattle');
     for(var i = 0; i < hoursOperation.length i++){
