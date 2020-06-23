@@ -17,20 +17,24 @@ calcCustomersPerHour : function() {
         this.customerPerHour.push(randomCustomerNumbers(this.minCust,this.maxCust));
     }
 },
-calcCookiesPerHour : function()
+calcCookiesPerHour : function() {
     this.calcCustomersPerHour();
     for(var 1=0; i < hoursOperation.length; i++){
         var oneHour = Math.ceil(this.customerPerHour[i] * this.avgPerCust);
-        }
+        this.cookiesPerHour.push(oneHour);
+        console.log('this.cookiesPerHour', this.cookiesPerHour);
+        this.totalHourlyCookies += oneHour;
+        console.log('this.totalHourlyCookies', this.totalHourlyCookies);
     }
-};
+},
 var allShops = [storeOne];
 function renderAllShops() {
     for(var i=0; i < allShops.length; i++){
         allShops[i].render();
     }
-
-var unorderedList = document.getElementById('seattle');
+render() {
+    this.calcCookiesPerHour ();
+    var unorderedList = document.getElementById('seattle');
     for(var i = 0; i < hoursOperation.length i++){
         var listItems = document.create element('li');
         listItems.textContent = hoursOperation[i] + this.cookiesPerHour[i] + 'cookies'.;
