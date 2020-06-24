@@ -71,7 +71,7 @@ var storeTwo = {
   },
   render () {
     this.calcCookiesPerHour();
-    var unorderedList = document.getElementById('seattle');
+    var unorderedList = document.getElementById('tokyo');
     for (var i = 0; i < hoursOperation.length; i++) {
       var listItems = document.createElement('li');
       listItems.textContent = hoursOperation[i] + this.cookiesPerHour[i] + 'cookies.';
@@ -109,7 +109,7 @@ var storeThree = {
   },
   render () {
     this.calcCookiesPerHour();
-    var unorderedList = document.getElementById('seattle');
+    var unorderedList = document.getElementById('dubai');
     for (var i = 0; i < hoursOperation.length; i++) {
       var listItems = document.createElement('li');
       listItems.textContent = hoursOperation[i] + this.cookiesPerHour[i] + 'cookies.';
@@ -147,7 +147,7 @@ var storeFour = {
   },
   render () {
     this.calcCookiesPerHour();
-    var unorderedList = document.getElementById('seattle');
+    var unorderedList = document.getElementById('paris');
     for (var i = 0; i < hoursOperation.length; i++) {
       var listItems = document.createElement('li');
       listItems.textContent = hoursOperation[i] + this.cookiesPerHour[i] + 'cookies.';
@@ -185,7 +185,7 @@ var storeFive = {
   },
   render () {
     this.calcCookiesPerHour();
-    var unorderedList = document.getElementById('seattle');
+    var unorderedList = document.getElementById('lima');
     for (var i = 0; i < hoursOperation.length; i++) {
       var listItems = document.createElement('li');
       listItems.textContent = hoursOperation[i] + this.cookiesPerHour[i] + 'cookies.';
