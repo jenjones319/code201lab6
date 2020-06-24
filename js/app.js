@@ -13,9 +13,9 @@ function Store(storeName, storeMinCust, storeMaxCust, storeAvgPerCust, storeTota
   this.storeMinCust = storeMinCust;
   this.storeMaxCust = storeMaxCust;
   this.storeAvgPerCust = storeAvgPerCust;
-  this.storeTotalHourlyCookies = storeTotalHourlyCookies;
-  this.storeCustomerPerHour = storeCustomerPerHour;
-  this.storeCookiesPerHour = storeCookiesPerHour;
+  this.storeCustomerPerHour = storeCustomerPerHour[];
+  this.storeCookiesPerHour = storeCookiesPerHour[];
+  this.storeTotalCookiesDaily = storeTotalCookiesDaily 0;
 }
 
 var allShops = [storeOne, storeTwo, storeThree, storeFour, storeFive];
@@ -26,20 +26,47 @@ function renderAllShops() {
 }
 renderAllShops();
 
-/*Create a new branch for today’s lab. Make sure it has all of your changes from lab 06 so that you can extend the functionality. -done
+Store.prototype.render = function() {
+  this.calcCookiesPerHour();
+  var tableRow = document.createElement('tr');
+  var tableData = document.createElement('td')
+  tableData.textContent = this.storeName;
+  tableRow.appendChild(tableData);
 
-Replace all of your object literals for the salmon cookie stand with a single constructor function that, when called with the ‘new’ keyword, it creates a new instance. 
+  for(var i=0; i < storeHours.length; i++){
+    tableData = document.createElement('td');
+    tableData.textContent = this.CookiesPerHour[i];
+    tableRow.appendChild(tableData);
+  }
+  var tableDailyTotal = document.createElement('th');
+  tableDailyTotal.textContent = this.totalCookiesDaily;
 
-var storeOne = new Store('seattle', 23, 65, 6.3, 0, [], []);
-firstStore.setHours();
-firstStore.getCookiesPerHour();
+  tableRow.appendChild(tableDailyTotal);
+  tableElement.appendChild(tableRow);
+};
 
 
-var allStores = [storeOne];
+var storeOne = new Store('seattle', 23, 65, 6.3);
+var storeTwo = new Store('tokyo', 3, 24, 1.2);
+var storeThree = new Store('dubai', 11, 38, 3.7);
+var storeFour = new Store('paris', 20, 38, 2.3);
+var storeFive = new Store('lima', 2, 16, 4.6);
 
+storeOne.setHours();
+storeOne.getCookiesPerHour();
+
+
+var allStores = [storeOne, storeTwo, storeThree, storeFour, storeFive];
+
+function renderAllData() {
+  //makeHeaderRow();
 
 for(var i = 0; i < allStores.length; i++){
   allStores[i].render();
+}
+  //makeFooterRow();
+
+renderAllData();
 
 Replace the lists of your data for each store and build a single table of data instead. It shoudl look similar to the following:
 
