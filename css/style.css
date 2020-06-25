@@ -24,7 +24,7 @@ a:active {
 
 header {
     padding: 15px;
-    background-color:hsla(188, 22%, 88%, 1);
+    background-color:rgb(247, 155, 144);
     color: hsla(222, 18%, 45%, 1);
     font-weight: bold;
 }
@@ -70,7 +70,7 @@ aside {
     color: hsla(222, 18%, 45%, 1);
     text-align: center;
     padding: 15px;
-    background-color: rgb(247, 155, 144);
+    background-color: #fe7171;
     float: left;
     width: 20%;
     overflow: hidden;
@@ -84,7 +84,7 @@ aside div {
 aside img {
     display: block;
     background: rgb(247, 155, 144);
-    border-radius: 45%;
+    border-radius: 25%;
 }
 
 section {
