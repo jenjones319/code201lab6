@@ -8,14 +8,13 @@ function randomCustomerNumbers (minCust, maxCust) {
 }
 
 //Constructor Function    Instance of an Object 
-function Store (name, minCust, maxCust, avgPerCust, customerPerHour, cookiesPerHour, totalCookiesDaily) {
+function Store (name, minCust, maxCust, avgPerCust) {
   this.name = name;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgPerCust = avgPerCust;
   this.customerPerHour = [];
   this.cookiesPerHour = [];
-  this.totalCookiesDaily = 0;
 };
 
 var storeOne = new Store('seattle', 23, 65, 6.3);
@@ -25,12 +24,6 @@ var storeFour = new Store('paris', 20, 38, 2.3);
 var storeFive = new Store('lima', 2, 16, 4.6);
 
 var allStores = [storeOne, storeTwo, storeThree, storeFour, storeFive];
-function renderAllStores () {
-  for (var i = 0; i < allStores.length; i++) {
-    allStores[i].render();
-  }
-}
-renderAllStores();
 
 Store.prototype.render = function () {
   this.calccookiesPerHour();
