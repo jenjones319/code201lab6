@@ -26,7 +26,7 @@ var storeFive = new Store('lima', 2, 16, 4.6);
 var allStores = [storeOne, storeTwo, storeThree, storeFour, storeFive];
 
 Store.prototype.render = function () {
-  this.calccookiesPerHour();
+  this.setTotalHourlyCookies();
   var tableRow = document.createElement('tr');
   var tableElement = document.createElement('table');
   var tableData = document.createElement('td');
@@ -39,7 +39,7 @@ Store.prototype.render = function () {
     tableRow.appendChild(tableData);
   }
   var tableDailyTotal = document.createElement('th');
-  tableDailyTotal.textContent = this.totalCookiesDaily;
+  tableDailyTotal.textContent = this.setTotalHourlyCookies();
 
   tableRow.appendChild(tableDailyTotal);
   tableElement.appendChild(tableRow);
@@ -52,7 +52,7 @@ Store.prototype.getCustomerPerHour = function() {
 };
 
 Store.prototype.getCookiesPerHour = function () {
-  this.setcustomerPerHour();
+  this.getCustomerPerHour();
   var oneHour = 0;
   for (var i = 0; i < storeHours.length; i++) {
     oneHour = Math.ceil(this.customerPerHour[i] * this.avgPerCust)
@@ -61,7 +61,7 @@ Store.prototype.getCookiesPerHour = function () {
 };
 
 Store.prototype.setTotalHourlyCookies = function () {
-  this.cookiesPerHour();
+  this.getCookiesPerHour();
   var cookies = 0
   for (var i = 0; i < storeHours.length; i++) {
     cookies = cookies + this.cookiesPerHour[i];
