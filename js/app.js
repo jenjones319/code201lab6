@@ -69,18 +69,7 @@ Store.prototype.setTotalHourlyCookies = function () {
   return cookies;
 }
 
-function renderAllData () {
-  // makeHeaderRow();
-
-  for (var i = 0; i < allStores.length; i++) {
-    allStores[i].render();
-  }
-
-}
-renderAllData();
-
 function makeFooterRow () {
-  var footerRow = document.createElement('tr');
   var newFooter = document.createElement('tfoot');
   newFooter.textContent='Total Hourly';
   newTable.appendChild(newFooter);
@@ -101,12 +90,16 @@ function makeFooterRow () {
    footerText.textContent = totalOfHours;
    footerRow.appendChild(footerText);
   }
-    footerText = document.createElement('th');
-    footerText.textContent = totalOfHours;
-    footerRow.appendChild(footerText);
-    newTable.appendChild(footerRow);
 
+function renderAllData () {
+  // makeHeaderRow();
+
+  for (var i = 0; i < allStores.length; i++) {
+    allStores[i].render();
+  }
+  makeFooterRow();
 }
+renderAllData();
 function handleFormSubmitted(event){
   var nameInput = document.getElementById('name');
   var nameValue = nameInput['value'];
