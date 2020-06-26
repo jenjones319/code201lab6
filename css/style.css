@@ -1,9 +1,11 @@
 /* Color Palette */
+/*
 --melon: hsla(5, 38%, 100%, 1);
 --eggshell: hsla(46, 12%, 98%, 1);
 --aero-blue: hsla(168, 24%, 95%, 1);
 --powder-blue: hsla(188, 22%, 88%, 1);
 --black-coral: hsla(222, 18%, 45%, 1);
+*/
 
 body {
     margin: 0;
@@ -112,4 +114,8 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+td {
+    padding: 10px;
 }
