@@ -92,11 +92,11 @@ function makeFooterRow () {
   var totalTotal = 0;
   for(var i = 0; i < allStores.length; i++) {
     totalTotal += allStores[i].setTotalHourlyCookies();
-    }
+  }
   footerText.textContent = totalTotal;
   newFooter.appendChild(footerText);
 
-  }
+}
 
 function renderAllData () {
   // makeHeaderRow();
@@ -107,7 +107,14 @@ function renderAllData () {
   makeFooterRow();
 }
 renderAllData();
+
 function handleFormSubmitted(event){
+
+  ////////////////////////////////////////
+  /*
+  We want the form to be adding a new store through our store constructor. This is great, and we can definitely do that also, but we will need a form to add a new store as well, just so we can show off how we pass information through HTML to our JS constructor. Looks good though.
+  */
+ /////////////////////////////////////////
   var nameInput = document.getElementById('name');
   var nameValue = nameInput['value'];
 
@@ -120,9 +127,8 @@ function handleFormSubmitted(event){
   var commentInput = document.getElementById('comment')
   var commentValue = commentInput['value'];
 
+  var newComment = [nameValue, phoneValue, emailValue, commentValue];
 }
 
 var formElement = document.getElementById('contact-us');
 formElement.addEventListener('submit', handleFormSubmitted);
-
-var newComment = [nameValue, phoneValue, emailValue, commentValue];
