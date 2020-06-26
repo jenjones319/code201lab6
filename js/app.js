@@ -27,7 +27,7 @@ var storeFive = new Store('lima', 2, 16, 4.6);
 var allStores = [storeOne, storeTwo, storeThree, storeFour, storeFive];
 function renderAllStores () {
   for (var i = 0; i < allStores.length; i++) {
-    allStores.render();
+    allStores[i].render();
   }
 }
 renderAllStores();
@@ -82,6 +82,54 @@ function renderAllData () {
   for (var i = 0; i < allStores.length; i++) {
     allStores[i].render();
   }
-  // makeFooterRow();
+
 }
 renderAllData();
+
+function makeFooterRow () {
+  var footerRow = document.createElement('tr');
+  var newFooter = document.createElement('tfoot');
+  newFooter.textContent='Total Hourly';
+  newTable.appendChild(newFooter);
+  footerText.textContent='Total Hourly';
+  footerRow.appendChild(footerText);
+
+  var totalOfHours = 0;
+  var hourlyTotals = 0;
+
+  for(var i = 0; i < storeHours.length; i++){
+    hourlyTotals = 0
+
+    for var j = 0; j < allStores.length; j++){
+      hourlyTotals += allStores[j].cookiesPerHour[i];
+      totalOfHours +- allStores[j].cookiesPerHour[i];
+    }
+   footerText = document.createElement('th');
+   footerText.textContent = totalOfHours;
+   footerRow.appendChild(footerText);
+  }
+    footerText = document.createElement('th');
+    footerText.textContent = totalOfHours;
+    footerRow.appendChild(footerText);
+    newTable.appendChild(footerRow);
+
+}
+function handleFormSubmitted(event){
+  var nameInput = document.getElementById('name');
+  var nameValue = nameInput['value'];
+
+  var phoneInput = document.getElementById('phone')
+  var phoneValue = phoneInput['value'];
+
+  var emailInput = document.getElementById('email')
+  var emailValue = emailInput['value'];
+
+  var commentInput = document.getElementById('comment')
+  var commentValue = commentInput['value'];
+
+}
+
+var formElement = document.getElementById('contact-us');
+formElement.addEventListener('submit', handleFormSubmitted);
+
+var newComment = [nameValue, phoneValue, emailValue, commentValue];
