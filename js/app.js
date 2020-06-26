@@ -25,10 +25,11 @@ var storeFive = new Store('lima', 2, 16, 4.6);
 
 var allStores = [storeOne, storeTwo, storeThree, storeFour, storeFive];
 
+var tableElement = document.getElementById('sales-table');
+
 Store.prototype.render = function () {
   this.setTotalHourlyCookies();
   var tableRow = document.createElement('tr');
-  var tableElement = document.createElement('table');
   var tableData = document.createElement('td');
   tableData.textContent = this.name;
   tableRow.appendChild(tableData);
@@ -72,23 +73,29 @@ Store.prototype.setTotalHourlyCookies = function () {
 function makeFooterRow () {
   var newFooter = document.createElement('tfoot');
   newFooter.textContent='Total Hourly';
-  newTable.appendChild(newFooter);
-  footerText.textContent='Total Hourly';
-  footerRow.appendChild(footerText);
+  tableElement.appendChild(newFooter);
 
-  var totalOfHours = 0;
   var hourlyTotals = 0;
 
   for(var i = 0; i < storeHours.length; i++){
-    hourlyTotals = 0
-
-    for var j = 0; j < allStores.length; j++){
+    hourlyTotals = 0;
+    var totalFoot = document.createElement('td');
+    for (var j = 0; j < allStores.length; j++){
       hourlyTotals += allStores[j].cookiesPerHour[i];
-      totalOfHours +- allStores[j].cookiesPerHour[i];
     }
-   footerText = document.createElement('th');
-   footerText.textContent = totalOfHours;
-   footerRow.appendChild(footerText);
+
+    totalFoot.textContent = hourlyTotals;
+    newFooter.appendChild(totalFoot);
+  }
+
+  var footerText = document.createElement('th');
+  var totalTotal = 0;
+  for(var i = 0; i < allStores.length; i++) {
+    totalTotal += allStores[i].setTotalHourlyCookies();
+    }
+  footerText.textContent = totalTotal;
+  newFooter.appendChild(footerText);
+
   }
 
 function renderAllData () {
