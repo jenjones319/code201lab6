@@ -52,6 +52,7 @@ nav ul {
     list-style-type: none;
     text-align: center;
     background-color: rgba(255,255,255,0.2);
+    position: relative;
 }
 
 nav li {
@@ -66,23 +67,39 @@ aside {
     padding: 15px;
     background-color: #fe7171;
     float: left;
-    width: 20%;
-    overflow: hidden;
+    width: 25%;
     box-sizing: border-box; /* Don't forget border-box if you're adding any additional width through padding, borders, etc. */
 }
 
 aside img {
-    display: block;
+    display: inline-block;
     background: rgb(247, 155, 144);
     border-radius: 25%;
 }
 
+#sales-table {
+    background-color: hsla(46, 12%, 98%, 1);
+    border: rgb(247, 155, 144);
+    margin: 5px;
+    padding: 5px;
+    width: 600px;
+    height: 350px;
+} 
+
 section {
     padding: 15px;
     float: left;
-    width: 80%;
+    width: 100%;
     box-sizing: border-box;
     background-color:hsla(188, 22%, 88%, 1);
+    align: inline-block
+}
+
+img {
+    height: 225px;
+    width: 275px;
+    padding: 5px;
+    margin: 5px;
 }
 
 .clear-float {
