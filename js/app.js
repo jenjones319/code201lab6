@@ -56,7 +56,7 @@ Store.prototype.getCookiesPerHour = function () {
   this.getCustomerPerHour();
   var oneHour = 0;
   for (var i = 0; i < storeHours.length; i++) {
-    oneHour = Math.ceil(this.customerPerHour[i] * this.avgPerCust)
+    oneHour = Math.ceil(this.customerPerHour[i] * this.avgPerCust);
     this.cookiesPerHour.push(oneHour);
   }
 };
@@ -118,13 +118,13 @@ function handleFormSubmitted(event){
   var nameInput = document.getElementById('name');
   var nameValue = nameInput['value'];
 
-  var maxCustInput = document.getElementById('maxCust')
+  var maxCustInput = document.getElementById('maxCust');
   var maxCustValue = maxCustInput['value'];
 
-  var minCustInput = document.getElementById('minCust')
+  var minCustInput = document.getElementById('minCust');
   var minCustValue = minCustInput['value'];
 
-  var avgCookiesInput = document.getElementById('avgCookies')
+  var avgCookiesInput = document.getElementById('avgCookies');
   var avgCookiesValue = avgCookiesInput['value'];
 
   var newStore = new Store(nameValue, minCustValue, maxCustValue, avgCookiesValue);
