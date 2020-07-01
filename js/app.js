@@ -8,14 +8,13 @@ function randomCustomerNumbers (minCust, maxCust) {
 }
 
 //Constructor Function    Instance of an Object 
-function Store (name, minCust, maxCust, avgPerCust, customerPerHour, cookiesPerHour, totalCookiesDaily) {
+function Store (name, minCust, maxCust, avgPerCust) {
   this.name = name;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgPerCust = avgPerCust;
   this.customerPerHour = [];
   this.cookiesPerHour = [];
-  this.totalCookiesDaily = 0;
 };
 
 var storeOne = new Store('seattle', 23, 65, 6.3);
@@ -25,17 +24,12 @@ var storeFour = new Store('paris', 20, 38, 2.3);
 var storeFive = new Store('lima', 2, 16, 4.6);
 
 var allStores = [storeOne, storeTwo, storeThree, storeFour, storeFive];
-function renderAllStores () {
-  for (var i = 0; i < allStores.length; i++) {
-    allStores[i].render();
-  }
-}
-renderAllStores();
+
+var tableElement = document.getElementById('sales-table');
 
 Store.prototype.render = function () {
-  this.calccookiesPerHour();
+  this.setTotalHourlyCookies();
   var tableRow = document.createElement('tr');
-  var tableElement = document.createElement('table');
   var tableData = document.createElement('td');
   tableData.textContent = this.name;
   tableRow.appendChild(tableData);
@@ -46,7 +40,7 @@ Store.prototype.render = function () {
     tableRow.appendChild(tableData);
   }
   var tableDailyTotal = document.createElement('th');
-  tableDailyTotal.textContent = this.totalCookiesDaily;
+  tableDailyTotal.textContent = this.setTotalHourlyCookies();
 
   tableRow.appendChild(tableDailyTotal);
   tableElement.appendChild(tableRow);
@@ -59,7 +53,7 @@ Store.prototype.getCustomerPerHour = function() {
 };
 
 Store.prototype.getCookiesPerHour = function () {
-  this.setcustomerPerHour();
+  this.getCustomerPerHour();
   var oneHour = 0;
   for (var i = 0; i < storeHours.length; i++) {
     oneHour = Math.ceil(this.customerPerHour[i] * this.avgPerCust)
@@ -68,12 +62,40 @@ Store.prototype.getCookiesPerHour = function () {
 };
 
 Store.prototype.setTotalHourlyCookies = function () {
-  this.cookiesPerHour();
+  this.getCookiesPerHour();
   var cookies = 0
   for (var i = 0; i < storeHours.length; i++) {
     cookies = cookies + this.cookiesPerHour[i];
   }
   return cookies;
+}
+
+function makeFooterRow () {
+  var newFooter = document.createElement('tfoot');
+  newFooter.textContent='Total Hourly';
+  tableElement.appendChild(newFooter);
+
+  var hourlyTotals = 0;
+
+  for(var i = 0; i < storeHours.length; i++){
+    hourlyTotals = 0;
+    var totalFoot = document.createElement('td');
+    for (var j = 0; j < allStores.length; j++){
+      hourlyTotals += allStores[j].cookiesPerHour[i];
+    }
+
+    totalFoot.textContent = hourlyTotals;
+    newFooter.appendChild(totalFoot);
+  }
+
+  var footerText = document.createElement('th');
+  var totalTotal = 0;
+  for(var i = 0; i < allStores.length; i++) {
+    totalTotal += allStores[i].setTotalHourlyCookies();
+  }
+  footerText.textContent = totalTotal;
+  newFooter.appendChild(footerText);
+
 }
 
 function renderAllData () {
@@ -82,39 +104,17 @@ function renderAllData () {
   for (var i = 0; i < allStores.length; i++) {
     allStores[i].render();
   }
-
+  makeFooterRow();
 }
 renderAllData();
 
-function makeFooterRow () {
-  var footerRow = document.createElement('tr');
-  var newFooter = document.createElement('tfoot');
-  newFooter.textContent='Total Hourly';
-  newTable.appendChild(newFooter);
-  footerText.textContent='Total Hourly';
-  footerRow.appendChild(footerText);
-
-  var totalOfHours = 0;
-  var hourlyTotals = 0;
-
-  for(var i = 0; i < storeHours.length; i++){
-    hourlyTotals = 0
-
-    for var j = 0; j < allStores.length; j++){
-      hourlyTotals += allStores[j].cookiesPerHour[i];
-      totalOfHours +- allStores[j].cookiesPerHour[i];
-    }
-   footerText = document.createElement('th');
-   footerText.textContent = totalOfHours;
-   footerRow.appendChild(footerText);
-  }
-    footerText = document.createElement('th');
-    footerText.textContent = totalOfHours;
-    footerRow.appendChild(footerText);
-    newTable.appendChild(footerRow);
-
-}
 function handleFormSubmitted(event){
+
+  ////////////////////////////////////////
+  /*
+  We want the form to be adding a new store through our store constructor. This is great, and we can definitely do that also, but we will need a form to add a new store as well, just so we can show off how we pass information through HTML to our JS constructor. Looks good though.
+  */
+ /////////////////////////////////////////
   var nameInput = document.getElementById('name');
   var nameValue = nameInput['value'];
 
@@ -127,9 +127,8 @@ function handleFormSubmitted(event){
   var commentInput = document.getElementById('comment')
   var commentValue = commentInput['value'];
 
+  var newComment = [nameValue, phoneValue, emailValue, commentValue];
 }
 
 var formElement = document.getElementById('contact-us');
 formElement.addEventListener('submit', handleFormSubmitted);
-
-var newComment = [nameValue, phoneValue, emailValue, commentValue];
