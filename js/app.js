@@ -109,7 +109,7 @@ function renderAllData () {
 renderAllData();
 
 function handleFormSubmitted(event){
-
+  event.preventDefault();
   ////////////////////////////////////////
   /*
   We want the form to be adding a new store through our store constructor. This is great, and we can definitely do that also, but we will need a form to add a new store as well, just so we can show off how we pass information through HTML to our JS constructor. Looks good though.
@@ -118,17 +118,19 @@ function handleFormSubmitted(event){
   var nameInput = document.getElementById('name');
   var nameValue = nameInput['value'];
 
-  var phoneInput = document.getElementById('phone')
-  var phoneValue = phoneInput['value'];
+  var maxCustInput = document.getElementById('maxCust')
+  var maxCustValue = maxCustInput['value'];
 
-  var emailInput = document.getElementById('email')
-  var emailValue = emailInput['value'];
+  var minCustInput = document.getElementById('minCust')
+  var minCustValue = minCustInput['value'];
 
-  var commentInput = document.getElementById('comment')
-  var commentValue = commentInput['value'];
+  var avgCookiesInput = document.getElementById('avgCookies')
+  var avgCookiesValue = avgCookiesInput['value'];
 
-  var newComment = [nameValue, phoneValue, emailValue, commentValue];
+  var newStore = new Store(nameValue, minCustValue, maxCustValue, avgCookiesValue);
+  allStores.push(newStore);
+  renderAllData();
 }
 
-var formElement = document.getElementById('contact-us');
+var formElement = document.getElementById('new-store');
 formElement.addEventListener('submit', handleFormSubmitted);
