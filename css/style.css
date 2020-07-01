@@ -1,9 +1,11 @@
 /* Color Palette */
+/*
 --melon: hsla(5, 38%, 100%, 1);
 --eggshell: hsla(46, 12%, 98%, 1);
 --aero-blue: hsla(168, 24%, 95%, 1);
 --powder-blue: hsla(188, 22%, 88%, 1);
 --black-coral: hsla(222, 18%, 45%, 1);
+*/
 
 body {
     margin: 0;
@@ -16,7 +18,7 @@ body {
 }
 header {
     padding: 15px;
-    background-color: seagreen
+    background-color:hsla(188, 22%, 88%, 1);
     color: hsla(222, 18%, 45%, 1);
     font-weight: bold;
 }
@@ -80,7 +82,7 @@ section {
     float: left;
     width: 80%;
     box-sizing: border-box;
-    background-color: seagreen;
+    background-color:hsla(188, 22%, 88%, 1);
 }
 
 .clear-float {
